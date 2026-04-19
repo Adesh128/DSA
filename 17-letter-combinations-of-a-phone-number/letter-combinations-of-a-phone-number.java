@@ -7,16 +7,16 @@ class Solution {
     }
 
     static String[] map = {
-            "",     // 0
-            "",     // 1
-            "abc",  // 2
-            "def",  // 3
-            "ghi",  // 4
-            "jkl",  // 5
-            "mno",  // 6
-            "pqrs", // 7
-            "tuv",  // 8
-            "wxyz"  //
+            "",     
+            "",     
+            "abc",  
+            "def",  
+            "ghi",  
+            "jkl",  
+            "mno",  
+            "pqrs", 
+            "tuv",  
+            "wxyz"  
     };
 
     static ArrayList<String> pad(String p, String up) {
