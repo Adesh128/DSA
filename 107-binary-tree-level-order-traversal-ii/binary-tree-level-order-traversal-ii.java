@@ -38,8 +38,10 @@ class Solution {
                     queue.offer(currentNode.right);
                 }
             }
-            result.add(0,currentLevel);
+            result.add(currentLevel);
+            
         }
+        Collections.reverse(result);
         return result;
     }
 }
