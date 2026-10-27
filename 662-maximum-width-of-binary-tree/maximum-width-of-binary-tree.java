@@ -15,20 +15,21 @@
  */
 class Solution {
     int maxWidth = 0;
+    ArrayList <Integer> leftIndex = new ArrayList<>();
     public int widthOfBinaryTree(TreeNode root) {
         
         if(root == null){
             return 0;
         }
-        ArrayList <Integer> leftIndex = new ArrayList<>();
-        findWidth(root,0,0,leftIndex);
+        
+        findWidth(root,0,0);
 
         return maxWidth;
 
 
     }
 // i = index at each node 
-    public void findWidth(TreeNode node,int depth, int i,ArrayList<Integer> leftIndex ){
+    public void findWidth(TreeNode node,int depth, int i){
         if(node == null){
             return;
         }
@@ -41,8 +42,8 @@ class Solution {
 
         maxWidth = Math.max(maxWidth,width);
 
-        findWidth(node.left,depth+1,2*i,leftIndex);
-         findWidth(node.right,depth+1,2*i+1,leftIndex);
+        findWidth(node.left,depth+1,2*i);
+         findWidth(node.right,depth+1,2*i+1);
 
     }
 }
