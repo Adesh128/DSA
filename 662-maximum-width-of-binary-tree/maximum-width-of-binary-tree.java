@@ -18,10 +18,6 @@ class Solution {
     ArrayList <Integer> leftIndex = new ArrayList<>();
     public int widthOfBinaryTree(TreeNode root) {
         
-        if(root == null){
-            return 0;
-        }
-        
         findWidth(root,0,0);
 
         return maxWidth;
