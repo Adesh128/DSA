@@ -1,0 +1,48 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    int maxWidth = 0;
+    public int widthOfBinaryTree(TreeNode root) {
+        
+        if(root == null){
+            return 0;
+        }
+        ArrayList <Integer> leftIndex = new ArrayList<>();
+        findWidth(root,0,0,leftIndex);
+
+        return maxWidth;
+
+
+    }
+// i = index at each node 
+    public void findWidth(TreeNode node,int depth, int i,ArrayList<Integer> leftIndex ){
+        if(node == null){
+            return;
+        }
+        if(depth == leftIndex.size()){
+            leftIndex.add(i);
+
+        }
+
+        int width = i -leftIndex.get(depth) +1;
+
+        maxWidth = Math.max(maxWidth,width);
+
+        findWidth(node.left,depth+1,2*i,leftIndex);
+         findWidth(node.right,depth+1,2*i+1,leftIndex);
+
+    }
+}
