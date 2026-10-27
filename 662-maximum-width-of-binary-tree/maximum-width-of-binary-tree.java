@@ -15,7 +15,7 @@
  */
 class Solution {
     ArrayList <Integer> leftIndex = new ArrayList<>();
-    int maxWidth = 0;
+    int maxWidth = 1;
     
     public int widthOfBinaryTree(TreeNode root) {
         
