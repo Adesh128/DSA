@@ -14,27 +14,35 @@
  * }
  */
 class Solution {
-    public TreeNode buildTree(int[] preorder, int[] inorder) {
-        if(preorder.length == 0){
-            return null;
+    static int index = 0;
+    public TreeNode buildTree(int[] preOrder, int[] inOrder) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int i=0;i<inOrder.length;i++){
+            map.put(inOrder[i],i);
         }
+        int[] index = {0};
 
-        int r = preorder[0];
-        int index = 0;
-
-        for(int i = 0;i<inorder.length;i++){
-            if(inorder[i] == r){
-                index = i;
-            }
-        }
-        TreeNode node = new TreeNode(r);
-        node.left = buildTree(Arrays.copyOfRange(preorder,1,index+1),Arrays.copyOfRange(inorder,0,index));
-
-        node.right = buildTree(Arrays.copyOfRange(preorder,index+1,preorder.length),Arrays.copyOfRange(inorder,index+1,inorder.length));
-
-        return node;
-
-        
+        return helper(preOrder,inOrder,0,preOrder.length-1,map,index);
 
     }
-}
+
+    public TreeNode helper(int [] preOrder,int[] inOrder,int left, int right,HashMap<Integer,Integer> map,int[] index){
+
+    if(left>right){
+        return null;
+    }
+
+    int current = preOrder[index[0]];
+    index[0]++;
+    TreeNode node = new TreeNode(current);
+
+    if(left== right){
+        return node;
+    }
+
+    int inOrderIndex = map.get(current);
+    node.left = helper(preOrder,inOrder,left,inOrderIndex-1,map,index);
+    node.right = helper(preOrder,inOrder,inOrderIndex+1,right,map,index);
+ 
+    return node;
+}}
